@@ -4,6 +4,7 @@ export default class App extends LightningElement {
   state = 'list';
 
     handleNavigate(event) {
+        this.state = event.detail.state;
         this.sessionId = event.detail.sessionId;
     }
 
