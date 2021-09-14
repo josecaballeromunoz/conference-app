@@ -1,3 +1,8 @@
 import { LightningElement } from 'lwc';
+export default class App extends LightningElement {
+  sessionId;
 
-export default class App extends LightningElement {}
+  handleNavigate(event) {
+    this.sessionId = event.detail.sessionId;
+  }
+}

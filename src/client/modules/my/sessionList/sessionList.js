@@ -1,7 +1,7 @@
 import { LightningElement } from 'lwc';
 import { getSessions } from 'data/sessionService';
 export default class SessionList extends LightningElement {
-    
+
     sessions = [];
 
     connectedCallback() {
@@ -15,5 +15,15 @@ export default class SessionList extends LightningElement {
         this.sessions = this.allSessions.filter(
           session => session.name.toLowerCase().includes(searchKey)
         );
-        }
+    }
+
+    handleSessionClick(event) {
+        const index = event.currentTarget.dataset.index;
+        const navigateEvent = new CustomEvent('navigate', {
+          detail: {
+            sessionId: this.sessions[index].id
+          }
+        });
+        this.dispatchEvent(navigateEvent);
+    }
 }
